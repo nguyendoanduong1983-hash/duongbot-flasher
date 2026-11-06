@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DươngBot AI - Nạp Firmware Trực Tuyến & Sơ Đồ Chân</title>
+  <meta name="description" content="Trang web nạp Firmware DươngBot AI Camera + OLED trực tuyến qua trình duyệt, xem sơ đồ chân GPIO và kết nối phần cứng.">
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🤖</text></svg>">
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <nav class="navbar">
+    <div class="container nav-content">
+      <a href="#" class="brand">
+        <div class="brand-icon">🤖</div>
+        <div>
+          <div class="brand-title">DUONGBOT AI</div>
+        </div>
+      </a>
+
+      <ul class="nav-links">
+        <li><a href="#flasher" class="active">Nạp Firmware</a></li>
+        <li><a href="#serial-monitor">Serial Monitor</a></li>
+        <li><a href="#huong-dan">Hướng Dẫn & Driver</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <main class="container">
+    <!-- Browser Compatibility Banner -->
+    <div class="browser-alert" id="browser-alert">
+      <span class="alert-icon">⚡</span>
+      <div>Hệ thống hỗ trợ nạp trực tiếp qua trình duyệt <b>Google Chrome</b>, <b>Microsoft Edge</b> hoặc <b>Cốc Cốc</b> trên máy tính mà không cần cài đặt thêm phần mềm!</div>
+    </div>
+
+    <!-- Hero Header -->
+    <header class="hero">
+      <h1 class="hero-title">Nạp Firmware DuongBot Trực Tuyến</h1>
+      <p class="hero-subtitle">
+        Trợ lý robot AI thông minh chạy trên vi xử lý ESP32-S3-N16-R8
+      </p>
+    </header>
+
+    <!-- Main Showcase & Flasher Card -->
+    <section class="showcase-card" id="flasher">
+      
+      <!-- CỘT TRÁI: CAROUSEL LẬT ẢNH (SẢN PHẨM -> NỐI DÂY -> BẢNG GPIO) -->
+      <div class="carousel-box" id="carousel-box">
+        <!-- Nút Kính lúp Phóng to góc phải -->
+        <button class="zoom-badge-btn" id="zoom-btn" title="Phóng to ảnh nét căng">
+          <span>🔍</span> Phóng to
+        </button>
+
+        <!-- Nút điều hướng Slide Trái / Phải -->
+        <button class="carousel-nav-btn prev" id="carousel-prev" title="Ảnh trước">❮</button>
+        <button class="carousel-nav-btn next" id="carousel-next" title="Ảnh tiếp theo">❯</button>
+
+        <!-- Khung chiếu ảnh -->
+        <div class="carousel-viewport" id="carousel-viewport" title="Nhấp chuột vào để phóng to ảnh xem chi tiết">
+          
+          <!-- Slide 1: Ảnh sản phẩm robot hoàn chỉnh -->
+          <div class="carousel-slide active" data-index="0">
+            <img src="Robot_DuongBot_AI_Camera_40P.jpg" alt="Robot DươngBot AI Camera 40P">
+            <span class="image-firmware-label">Duongbot-AI-Cam-OV3660-40P</span>
+          </div>
+
+          <!-- Slide 2: Sơ đồ nối dây module -->
+          <div class="carousel-slide" data-index="1">
+            <img src="So_Do_Noi_Day_DuongBot_3K_NetCang.jpg" alt="Sơ Đồ Nối Dây DươngBot 3K">
+            <span class="image-firmware-label">Duongbot-AI-Cam-OV3660-40P</span>
+          </div>
+
+          <!-- Slide 3: Bảng sơ đồ chân GPIO -->
+          <div class="carousel-slide" data-index="2">
+            <img src="DUONGBOT_V1_SO_DO_GPIO.jpg" alt="Bảng Sơ Đồ Chân GPIO DươngBot V1">
+            <span class="image-firmware-label">Duongbot-AI-Cam-OV3660-40P</span>
+          </div>
+
+          <!-- Slide 4: D-BotAI robot -->
+          <div class="carousel-slide" data-index="3">
+            <img src="Hinh_Anh_D-BOTAI.jpg" alt="Robot D-BotAI Dual OLED v1.2">
+            <span class="image-firmware-label">D-BotAI-N16-R8-44P</span>
+          </div>
+
+          <!-- Slide 5: D-BotAI pinout -->
+          <div class="carousel-slide" data-index="4">
+            <img src="Bang_Chan_GPIO_D-BotAI.jpg" alt="Sơ đồ chân GPIO D-BotAI Dual OLED v1.2">
+            <span class="image-firmware-label">D-BotAI-N16-R8-44P</span>
+          </div>
+
+        </div>
+
+        <!-- Chú thích & Chấm tròn vị trí slide -->
+        <div class="carousel-footer">
+          <div class="slide-caption" id="slide-caption">1/3 • Ảnh Mẫu Robot DươngBot AI Camera 40P</div>
+          <div class="carousel-dots">
+            <span class="carousel-dot active" data-index="0"></span>
+            <span class="carousel-dot" data-index="1"></span>
+            <span class="carousel-dot" data-index="2"></span>
+            <span class="carousel-dot" data-index="3"></span>
+            <span class="carousel-dot" data-index="4"></span>
+          </div>
+        </div>
+      </div>
+
+      <!-- CỘT PHẢI: THÔNG TIN & BẢNG ĐIỀU KHIỂN NẠP FIRMWARE -->
+      <div class="info-box">
+        <div>
+          <div class="firmware-choices" role="group" aria-label="Chọn firmware để nạp">
+            <button class="firmware-choice active" type="button" data-firmware-id="duongbot" aria-pressed="true">
+              <small>FIRMWARE 01</small><b>DuongBot AI</b><span>ESP32S3-N16-R8-CAM-40P</span>
+            </button>
+            <button class="firmware-choice" type="button" data-firmware-id="dbotai" aria-pressed="false">
+              <small>FIRMWARE 02</small><b>D-BotAI Dual OLED</b><span>ESP32-S3-N16-R8-44P</span>
+            </button>
+          </div>
+          <div class="product-badges">
+            <span class="badge chip" id="board-badge">ESP32S3-N16-R8-CAM-40P</span>
+            <span class="badge" id="camera-badge">VO3660</span>
+            <span class="badge" id="display-badge">OLED SSD1306</span>
+            <span class="badge vip">🍀 Free Firmware</span>
+          </div>
+
+          <h2 class="product-title" id="product-title">DuongBot AI Camera & OLED</h2>
+          <p class="product-desc" id="product-desc">
+            Bản firmware hợp nhất hoàn chỉnh cho Robot DươngBot tích hợp thị giác máy tính AI, màn hình biểu cảm gương mặt và đàm thoại giọng nói thông minh. Nạp trực tiếp qua cổng COM không cần cài đặt IDE.
+          </p>
+
+          <div class="specs-list">
+            <div class="spec-item">
+              <span class="spec-label">Vi Điều Khiển</span>
+              <span class="spec-value" id="spec-chip">ESP32-S3 (Xtensa LX7)</span>
+            </div>
+            <div class="spec-item">
+              <span class="spec-label">Tệp Firmware</span>
+              <span class="spec-value" id="spec-file">duongbot_cam_oled.bin</span>
+            </div>
+            <div class="spec-item">
+              <span class="spec-label">Dung Lượng</span>
+              <span class="spec-value" id="spec-size">~11.8 MB (Offset 0x0000)</span>
+            </div>
+            <div class="spec-item">
+              <span class="spec-label">Màn Hình & Cam</span>
+              <span class="spec-value" id="spec-hardware">OLED 0.96" + Camera OV3660</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- KHỐI THAO TÁC NẠP ONLINE -->
+        <div class="flash-panel">
+          <div class="panel-row">
+            <div class="form-group">
+              <label class="form-label" for="flash-baudrate">
+                <span>Tốc độ nạp (Baudrate)</span>
+                <small style="color:var(--primary)">460800 khuyên dùng</small>
+              </label>
+              <select class="form-select" id="flash-baudrate">
+                <option value="460800" selected>460,800 bps (Nạp nhanh, ổn định)</option>
+                <option value="921600">921,600 bps (Siêu tốc - cáp xịn)</option>
+                <option value="115200">115,200 bps (Tiêu chuẩn / cáp dài)</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- NÚT NẠP CHÍNH -->
+          <button class="btn-neon" id="btn-flash-primary">
+            <span>⚡</span> <span id="flash-action-label">NẠP DUONGBOT AI</span>
+          </button>
+
+          <!-- TÙY CHỌN NẠP FILE TỪ MÁY TÍNH -->
+          <div class="custom-file-row">
+            <span>Tự nạp file .bin riêng:</span>
+            <label class="btn-secondary" style="margin:0; cursor:pointer;">
+              📁 Chọn file từ máy tính
+              <input type="file" id="custom-bin-file" accept=".bin" style="display:none;">
+            </label>
+          </div>
+        </div>
+
+      </div>
+
+    </section>
+
+    <section class="firmware-capabilities" aria-live="polite">
+      <div class="capabilities-heading">
+        <div class="eyebrow"><i></i> TÍNH NĂNG FIRMWARE ĐANG CHỌN</div>
+        <h2 id="capabilities-title">DuongBot AI <span>Camera & OLED</span></h2>
+      </div>
+      <div class="capability-grid" id="capability-grid"></div>
+    </section>
+
+    <!-- SECTION 2: SERIAL MONITOR & HƯỚNG DẪN KỸ THUẬT -->
+    <div class="section-grid">
+      
+      <!-- SERIAL MONITOR -->
+      <div class="content-card" id="serial-monitor">
+        <div class="card-header-flex">
+          <h3 class="card-title"><span>📟</span> Serial Monitor (Đọc Log)</h3>
+          <div class="serial-controls">
+            <button class="btn-secondary" id="mon-clear-btn" title="Xoá màn hình">Xóa</button>
+            <button class="btn-secondary" id="mon-toggle-btn">🔌 Mở Cổng Serial</button>
+          </div>
+        </div>
+        <p style="font-size:0.85rem; color:var(--text-muted); margin-bottom:12px;">
+          Theo dõi log khởi động và địa chỉ IP Wi-Fi của DươngBot sau khi nạp (tốc độ chuẩn 115,200 baud).
+        </p>
+        <div class="serial-terminal" id="mon-terminal">Nhấn "Mở Cổng Serial" để bắt đầu đọc dữ liệu từ robot...</div>
+      </div>
+
+      <!-- HƯỚNG DẪN & XỬ LÝ LỖI -->
+      <div class="content-card" id="huong-dan">
+        <h3 class="card-title" style="margin-bottom:16px;"><span>🛠️</span> Hướng Dẫn & Tải Driver</h3>
+        
+        <div class="guide-step">
+          <div class="step-num">1</div>
+          <div class="step-text">
+            <h4>Cắm cáp USB kết nối robot với máy tính</h4>
+            <p>Đảm bảo sử dụng cáp truyền dữ liệu (Data Cable), không dùng cáp chỉ có chức năng sạc.</p>
+          </div>
+        </div>
+
+        <div class="guide-step">
+          <div class="step-num">2</div>
+          <div class="step-text">
+            <h4>Bấm nút Nạp và chọn cổng COM</h4>
+            <p>Chọn đúng cổng COM tương ứng của mạch (ví dụ: USB-Enhanced-SERIAL CH340 hoặc CP210x).</p>
+          </div>
+        </div>
+
+        <div class="guide-step">
+          <div class="step-num">3</div>
+          <div class="step-text">
+            <h4>Nếu mạch báo lỗi kết nối (Timeout):</h4>
+            <p>Nhấn giữ nút <b>BOOT</b> trên mạch ➔ Nhấn nhả nút <b>RST (RESET)</b> ➔ Thả nút <b>BOOT</b> rồi bấm nạp lại.</p>
+          </div>
+        </div>
+
+        <div style="margin-top:14px; border-top: 1px solid rgba(255,255,255,0.08); padding-top:12px;">
+          <span style="font-size:0.82rem; color:var(--text-muted); font-weight:600;">Tải Driver cổng nạp nếu máy tính chưa nhận:</span>
+          <div class="driver-links">
+            <a href="https://www.wch-ic.com/downloads/CH341SER_EXE.html" target="_blank" rel="noopener" class="driver-btn">Driver CH340 / CH341</a>
+            <a href="https://www.silabs.com/developers/usb-to-uart-bridge-vcp-drivers" target="_blank" rel="noopener" class="driver-btn">Driver CP210x</a>
+            <a href="https://www.wch-ic.com/downloads/CH9102SER_EXE.html" target="_blank" rel="noopener" class="driver-btn">Driver CH9102</a>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+  </main>
+
+  <!-- =====================================================================
+       POPUP MODAL TIẾN TRÌNH NẠP FIRMWARE
+       ===================================================================== -->
+  <div class="modal-overlay" id="flash-modal">
+    <div class="flash-modal">
+      <div class="flash-modal-icon" id="flash-modal-icon">⚡</div>
+      <h3 class="modal-title" id="flash-modal-title">Đang chuẩn bị...</h3>
+      <p class="modal-status" id="flash-modal-status">Vui lòng chờ trong giây lát...</p>
+
+      <div class="progress-track">
+        <div class="progress-fill" id="progress-fill"></div>
+      </div>
+
+      <div class="progress-meta">
+        <span id="progress-bytes">0 / 0 bytes</span>
+        <span class="progress-pct" id="progress-pct">0%</span>
+      </div>
+
+      <div class="terminal-box" id="terminal-logs"></div>
+
+      <button class="modal-close-btn" id="modal-close-btn" style="display:none;">Đóng Cửa Sổ</button>
+    </div>
+  </div>
+
+  <!-- =====================================================================
+       FULLSCREEN LIGHTBOX MODAL (XEM SƠ ĐỒ NÉT CĂNG)
+       ===================================================================== -->
+  <div class="lightbox-overlay" id="lightbox">
+    <div class="lightbox-content">
+      <button class="lightbox-close" id="lightbox-close" title="Đóng (ESC)">×</button>
+      <button class="lightbox-nav prev" id="lb-prev" title="Ảnh trước">❮</button>
+      <span class="lightbox-firmware-label" id="lightbox-firmware-label"></span>
+      <img src="" alt="Phóng to chi tiết" class="lightbox-img" id="lightbox-img">
+      <button class="lightbox-nav next" id="lb-next" title="Ảnh tiếp theo">❯</button>
+      <div class="lightbox-caption" id="lightbox-caption"></div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container">
+      <p>© 2026 DươngBot AI Project • Hệ sinh thái Robot Thông Minh & Firmware Trực Tuyến</p>
+      <p style="margin-top:4px; font-size:0.75rem;">Phát triển trên nền tảng Web Serial API & ESP-IDF / esptool-js</p>
+    </div>
+  </footer>
+
+  <!-- MODULE JS -->
+  <script type="module" src="app.js"></script>
+
+</body>
+</html>
