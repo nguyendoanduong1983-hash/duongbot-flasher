@@ -387,7 +387,12 @@ async function startFirmwareFlash(customFile = null) {
       transport,
       baudrate: baudRate,
       terminal: {
-        clean() {},
+        clean() {
+          if (terminal) terminal.innerHTML = "";
+        },
+        write(m) {
+          if (m && m.trim()) logToTerminal(m.trim(), "info");
+        },
         writeLine(m) {
           if (m && m.trim()) logToTerminal(m.trim(), "info");
         }
