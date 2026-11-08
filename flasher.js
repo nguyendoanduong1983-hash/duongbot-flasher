@@ -344,7 +344,7 @@ async function startFirmwareFlash(customFile = null) {
     } else {
       openFlashModal("Đang tải dữ liệu...", `Đang tải firmware ${firmware.name} từ máy chủ...`);
       logToTerminal(`🌐 Đang tải firmware ${firmware.name} (${fileName}) từ máy chủ...`);
-      const response = await fetch(fileName);
+      const response = await fetch(`${fileName}?v=${Date.now()}`);
       if (!response.ok) {
         throw new Error(`Không thể tải firmware từ máy chủ (${response.status} ${response.statusText})`);
       }
