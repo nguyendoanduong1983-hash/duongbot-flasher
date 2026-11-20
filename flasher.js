@@ -29,14 +29,14 @@ const SLIDES = [
   },
   {
     src: "Hinh_Anh_D-BOTAI.jpg",
-    title: "4/5 • D-BotAI Dual OLED v1.2",
-    desc: "Robot AI màn hình kép, âm thanh trực tuyến và cảm biến ToF.",
+    title: "4/5 • D-BotAI Multi-Display v2.0",
+    desc: "Robot AI đa màn hình, âm thanh trực tuyến và cảm biến ToF.",
     firmwareLabel: "D-BotAI-N16-R8-44P"
   },
   {
     src: "Bang_Chan_GPIO_D-BotAI.jpg",
     title: "5/5 • Sơ Đồ GPIO D-BotAI ESP32-S3-N16-R8-44P",
-    desc: "Pinout phần cứng D-BotAI Dual OLED v1.2.",
+    desc: "Pinout phần cứng D-BotAI Multi-Display v2.0.",
     firmwareLabel: "D-BotAI-N16-R8-44P"
   }
 ];
@@ -66,15 +66,15 @@ const FIRMWARES = {
   },
   dbotai: {
     name: "D-BotAI",
-    title: "D-BotAI Dual OLED (v2.0)",
+    title: "D-BotAI Multi-Display (v2.0)",
     board: "ESP32-S3-N16-R8-44P",
     file: "D-BotAI.bin",
     size: "8.81 MB (Offset 0x0000)",
     camera: "VL53L0X ToF",
-    display: "Dual OLED",
+    display: "Multi-Display (OLED / TFT / Round LCD)",
     chip: "ESP32-S3-N16-R8",
-    hardware: "SSD1306 0.96\" + SH1106 1.3\"",
-    description: "Đàm thoại AI Xiaozhi, tìm và phát nhạc YouTube/SoundCloud, nghe 10 kênh radio Việt Nam, đồng bộ kho nhạc/truyện GitHub và hiển thị Spectrum 16 dải cùng đôi mắt Mochan.",
+    hardware: "OLED / ST7789 / GC9A01",
+    description: "Bản firmware đa màn hình cao cấp: Hỗ trợ linh hoạt Dual OLED (SSD1306/SH1106), màn màu TFT ST7789 và màn tròn GC9A01. Đàm thoại AI Xiaozhi, tìm và phát nhạc YouTube/SoundCloud, 10 kênh Radio và hiển thị Spectrum.",
     gallery: 3,
     features: COMMON_FEATURES
   }
@@ -85,7 +85,7 @@ let selectedFirmwareId = "duongbot";
 function renderFirmwareFeatures(firmware) {
   const title = document.getElementById("capabilities-title");
   const grid = document.getElementById("capability-grid");
-  title.innerHTML = firmware.name === "D-BotAI" ? "D-BotAI <span>Dual OLED · v2.0</span>" : "DuongBot AI <span>Camera & OLED</span>";
+  title.innerHTML = firmware.name === "D-BotAI" ? "D-BotAI <span>Multi-Display · v2.0</span>" : "DuongBot AI <span>Camera & OLED</span>";
   grid.innerHTML = firmware.features.map(([icon, heading, description]) => `
     <article class="capability-item"><span aria-hidden="true">${icon}</span><h3>${heading}</h3><p>${description}</p></article>
   `).join("");

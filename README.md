@@ -3,7 +3,7 @@
 Trang hiện có hỗ trợ hai firmware ESP32-S3 với cùng bố cục lựa chọn và bộ nạp. Chọn một firmware trong thẻ thiết bị; tiêu đề, thông số, ảnh, danh sách tính năng và file nạp sẽ đổi đồng bộ theo lựa chọn.
 
 - **DuongBot AI** — `duongbot_cam_oled.bin` — ESP32S3-N16-R8-CAM-40P.
-- **D-BotAI Dual OLED v1.2** — `D-BotAI.bin` — ESP32-S3-N16-R8-44P.
+- **D-BotAI Multi-Display v2.0** — `D-BotAI.bin` — ESP32-S3-N16-R8-44P. Hỗ trợ Dual OLED, TFT ST7789 và Round LCD GC9A01.
 
 Cả hai file full image được ghi từ offset `0x000000`. Bộ nạp chỉ tiếp tục khi nhận diện được chip ESP32-S3.
 
