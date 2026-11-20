@@ -66,7 +66,7 @@ const FIRMWARES = {
   },
   dbotai: {
     name: "D-BotAI",
-    title: "D-BotAI Dual OLED (v1.2)",
+    title: "D-BotAI Dual OLED (v2.0)",
     board: "ESP32-S3-N16-R8-44P",
     file: "D-BotAI.bin",
     size: "8.81 MB (Offset 0x0000)",
@@ -85,7 +85,7 @@ let selectedFirmwareId = "duongbot";
 function renderFirmwareFeatures(firmware) {
   const title = document.getElementById("capabilities-title");
   const grid = document.getElementById("capability-grid");
-  title.innerHTML = firmware.name === "D-BotAI" ? "D-BotAI <span>Dual OLED · v1.2</span>" : "DuongBot AI <span>Camera & OLED</span>";
+  title.innerHTML = firmware.name === "D-BotAI" ? "D-BotAI <span>Dual OLED · v2.0</span>" : "DuongBot AI <span>Camera & OLED</span>";
   grid.innerHTML = firmware.features.map(([icon, heading, description]) => `
     <article class="capability-item"><span aria-hidden="true">${icon}</span><h3>${heading}</h3><p>${description}</p></article>
   `).join("");
