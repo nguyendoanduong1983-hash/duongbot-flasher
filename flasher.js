@@ -28,15 +28,27 @@ const SLIDES = [
     firmwareLabel: "Duongbot-AI-Cam-OV3660-40P"
   },
   {
-    src: "Hinh_Anh_D-BOTAI.jpg",
-    title: "4/5 • D-BotAI Multi-Display v2.0",
-    desc: "Robot AI đa màn hình, âm thanh trực tuyến và cảm biến ToF.",
+    src: "01_Hero_4_Man_Hinh_DBotAI_v2.png",
+    title: "4/7 • D-BotAI v2.0 Cân Trọn 4 Màn Hình",
+    desc: "1 Firmware duy nhất hỗ trợ đổi trực tiếp 4 loại màn hình qua Web WiFi.",
     firmwareLabel: "D-BotAI-N16-R8-44P"
   },
   {
-    src: "Bang_Chan_GPIO_D-BotAI.jpg",
-    title: "5/5 • Sơ Đồ GPIO D-BotAI ESP32-S3-N16-R8-44P",
-    desc: "Pinout phần cứng D-BotAI Multi-Display v2.0.",
+    src: "02_Man_Tron_GC9A01_5_Che_Do.png",
+    title: "5/7 • Màn Tròn GC9A01 1.28\" (5 Chế Độ)",
+    desc: "Thiết kế riêng cho màn tròn: Đồng hồ cầu vồng, mắt 3D Aurora, Đĩa than & Equalizer 360°.",
+    firmwareLabel: "D-BotAI-N16-R8-44P"
+  },
+  {
+    src: "03_Giai_Tri_Nhac_Radio_Web.png",
+    title: "6/7 • Giải Trí Nhạc YouTube, Radio & Web",
+    desc: "Kho nhạc GitHub, tìm nhạc bằng giọng nói, Radio 10 kênh và quét Mã QR điều khiển.",
+    firmwareLabel: "D-BotAI-N16-R8-44P"
+  },
+  {
+    src: "04_So_Do_Chan_ESP32S3_Chuan.png",
+    title: "7/7 • Sơ Đồ Chân Chuẩn ESP32-S3-N16-R8-44P",
+    desc: "Sơ đồ đấu nối chi tiết chuẩn xác cho bo mạch ESP32-S3 44 chân.",
     firmwareLabel: "D-BotAI-N16-R8-44P"
   }
 ];
@@ -71,10 +83,10 @@ const FIRMWARES = {
     file: "D-BotAI.bin",
     size: "8.81 MB (Offset 0x0000)",
     camera: "VL53L0X ToF",
-    display: "Multi-Display (OLED / TFT / Round LCD)",
+    display: "Cân 4 Màn (OLED / ST7735 / ST7789 / GC9A01)",
     chip: "ESP32-S3-N16-R8",
-    hardware: "OLED / ST7789 / GC9A01",
-    description: "Bản firmware đa màn hình cao cấp: Hỗ trợ linh hoạt Dual OLED (SSD1306/SH1106), màn màu TFT ST7789 và màn tròn GC9A01. Đàm thoại AI Xiaozhi, tìm và phát nhạc YouTube/SoundCloud, 10 kênh Radio và hiển thị Spectrum.",
+    hardware: "OLED 0.96\"/1.3\" · ST7735 · ST7789 · GC9A01 Tròn",
+    description: "Bản firmware v2.0 hợp nhất cao cấp: 1 file nạp duy nhất cân trọn 4 loại màn hình! Đổi trực tiếp trên Web cấu hình (192.168.4.1) không cần nạp lại code. Tích hợp AI Xiaozhi, tìm phát nhạc YouTube/SoundCloud, 10 kênh Radio, đĩa than xoay & 9 hiệu ứng sóng nhạc Spectrum 360°.",
     gallery: 3,
     features: COMMON_FEATURES
   }
