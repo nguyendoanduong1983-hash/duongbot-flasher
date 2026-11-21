@@ -28,26 +28,32 @@ const SLIDES = [
     firmwareLabel: "Duongbot-AI-Cam-OV3660-40P"
   },
   {
+    src: "DBotAI_ST7789_Theme.webp",
+    title: "4/8 • Ảnh chủ đề D-BotAI · màn hình ST7789",
+    desc: "Robot D-BotAI với màn hình màu ST7789, ảnh giới thiệu firmware ESP32-S3-N16-R8-44P.",
+    firmwareLabel: "D-BotAI-N16-R8-44P"
+  },
+  {
     src: "01_Hero_4_Man_Hinh_DBotAI_v2.png",
-    title: "4/7 • D-BotAI v2.0 Cân Trọn 4 Màn Hình",
+    title: "5/8 • D-BotAI v2.0 Cân Trọn 4 Màn Hình",
     desc: "1 Firmware duy nhất hỗ trợ đổi trực tiếp 4 loại màn hình qua Web WiFi.",
     firmwareLabel: "D-BotAI-N16-R8-44P"
   },
   {
     src: "02_Man_Tron_GC9A01_5_Che_Do.png",
-    title: "5/7 • Màn Tròn GC9A01 1.28\" (5 Chế Độ)",
+    title: "6/8 • Màn Tròn GC9A01 1.28\" (5 Chế Độ)",
     desc: "Thiết kế riêng cho màn tròn: Đồng hồ cầu vồng, mắt 3D Aurora, Đĩa than & Equalizer 360°.",
     firmwareLabel: "D-BotAI-N16-R8-44P"
   },
   {
     src: "03_Giai_Tri_Nhac_Radio_Web.png",
-    title: "6/7 • Giải Trí Nhạc YouTube, Radio & Web",
+    title: "7/8 • Giải Trí Nhạc YouTube, Radio & Web",
     desc: "Kho nhạc GitHub, tìm nhạc bằng giọng nói, Radio 10 kênh và quét Mã QR điều khiển.",
     firmwareLabel: "D-BotAI-N16-R8-44P"
   },
   {
     src: "04_So_Do_Chan_ESP32S3_Chuan.png",
-    title: "7/7 • Sơ Đồ Chân Chuẩn ESP32-S3-N16-R8-44P",
+    title: "8/8 • Sơ Đồ Chân Chuẩn ESP32-S3-N16-R8-44P",
     desc: "Sơ đồ đấu nối chi tiết chuẩn xác cho bo mạch ESP32-S3 44 chân.",
     firmwareLabel: "D-BotAI-N16-R8-44P"
   }
