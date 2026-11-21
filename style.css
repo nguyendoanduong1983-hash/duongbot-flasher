@@ -1084,3 +1084,283 @@ footer {
   .firmware-choice { min-height: 68px; }
   .capability-grid { grid-template-columns: 1fr; }
 }
+
+/* Separate product cards: each firmware owns its photos, board details and selection. */
+.firmware-selector-section {
+  margin: 24px 0 32px;
+}
+
+.firmware-selector-heading {
+  margin: 0 auto 22px;
+  max-width: 760px;
+  text-align: center;
+}
+
+.firmware-selector-heading > span,
+.fw-product-kicker {
+  color: var(--primary, #00d2ff);
+  font-size: .68rem;
+  font-weight: 800;
+  letter-spacing: .12em;
+}
+
+.firmware-selector-heading h2 {
+  color: #f8fafc;
+  font-size: clamp(1.65rem, 4vw, 2.5rem);
+  letter-spacing: -.035em;
+  line-height: 1.15;
+  margin: 8px 0;
+}
+
+.firmware-selector-heading p,
+.fw-product-heading p,
+.fw-product-description {
+  color: var(--text-muted, #94a3b8);
+  margin: 0;
+}
+
+.firmware-product-grid {
+  display: grid;
+  gap: 18px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.fw-product-card {
+  --fw-accent: #20d4e8;
+  background: linear-gradient(165deg, rgba(17, 29, 43, .98), rgba(10, 18, 29, .99));
+  border: 1px solid var(--border-color, rgba(148, 163, 184, .2));
+  border-radius: var(--radius-lg, 16px);
+  min-width: 0;
+  overflow: hidden;
+  transition: border-color .2s ease, transform .2s ease;
+}
+
+.fw-product-card--dbotai { --fw-accent: #bd8cff; }
+.fw-product-card:hover { border-color: color-mix(in srgb, var(--fw-accent) 55%, transparent); transform: translateY(-2px); }
+
+.fw-product-heading {
+  align-items: flex-start;
+  display: flex;
+  gap: 12px;
+  justify-content: space-between;
+  padding: 20px 20px 15px;
+}
+
+.fw-product-heading h3 {
+  color: #f8fafc;
+  font-size: clamp(1.15rem, 2.2vw, 1.5rem);
+  letter-spacing: -.025em;
+  line-height: 1.2;
+  margin: 5px 0;
+}
+
+.fw-product-heading p { font-size: .78rem; }
+
+.fw-ready-tag {
+  background: color-mix(in srgb, var(--fw-accent) 12%, transparent);
+  border: 1px solid color-mix(in srgb, var(--fw-accent) 38%, transparent);
+  border-radius: 999px;
+  color: var(--fw-accent);
+  flex: 0 0 auto;
+  font-size: .64rem;
+  font-weight: 700;
+  padding: 5px 9px;
+}
+
+.fw-card-gallery {
+  aspect-ratio: 16 / 9;
+  background: #050a10;
+  overflow: hidden;
+  position: relative;
+}
+
+.fw-card-gallery img {
+  display: block;
+  height: 100%;
+  object-fit: contain;
+  width: 100%;
+}
+
+.fw-image-label {
+  background: rgba(5, 12, 20, .86);
+  border: 1px solid rgba(255, 255, 255, .13);
+  border-radius: 7px;
+  bottom: 12px;
+  color: #fff;
+  font-size: .64rem;
+  left: 12px;
+  max-width: calc(100% - 120px);
+  overflow: hidden;
+  padding: 5px 8px;
+  position: absolute;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.fw-gallery-controls {
+  align-items: center;
+  background: rgba(5, 10, 16, .82);
+  border: 1px solid rgba(255, 255, 255, .14);
+  border-radius: 999px;
+  bottom: 9px;
+  display: flex;
+  gap: 4px;
+  padding: 3px;
+  position: absolute;
+  right: 9px;
+}
+
+.fw-gallery-controls button {
+  align-items: center;
+  background: transparent;
+  border: 0;
+  border-radius: 50%;
+  color: #f8fafc;
+  cursor: pointer;
+  display: inline-flex;
+  font-size: 1.15rem;
+  height: 30px;
+  justify-content: center;
+  line-height: 1;
+  width: 30px;
+}
+
+.fw-gallery-controls button:hover,
+.fw-gallery-controls button:focus-visible { background: rgba(255, 255, 255, .12); }
+
+.fw-gallery-count {
+  color: #dbeafe;
+  font-size: .68rem;
+  min-width: 32px;
+  text-align: center;
+}
+
+.fw-product-body { padding: 16px 20px 20px; }
+.fw-product-description { font-size: .82rem; line-height: 1.55; min-height: 42px; }
+
+.fw-spec-grid {
+  border-bottom: 1px solid rgba(148, 163, 184, .16);
+  border-top: 1px solid rgba(148, 163, 184, .16);
+  display: grid;
+  gap: 12px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  margin: 14px 0 0;
+  padding: 13px 0;
+}
+
+.fw-spec-grid dt {
+  color: #8498ad;
+  font-size: .6rem;
+  letter-spacing: .08em;
+  margin-bottom: 3px;
+  text-transform: uppercase;
+}
+
+.fw-spec-grid dd {
+  color: #f0f6ff;
+  font-size: .76rem;
+  font-weight: 700;
+  margin: 0;
+  overflow-wrap: anywhere;
+}
+
+.fw-pinout-button {
+  background: rgba(189, 140, 255, .07);
+  border: 1px solid rgba(189, 140, 255, .34);
+  border-radius: 8px;
+  color: #d8baff;
+  cursor: pointer;
+  font: inherit;
+  font-size: .68rem;
+  font-weight: 700;
+  margin-top: 12px;
+  padding: 9px 10px;
+  text-align: left;
+  width: 100%;
+}
+
+.fw-pinout-button:hover,
+.fw-pinout-button:focus-visible { background: rgba(189, 140, 255, .14); }
+
+.fw-feature-list {
+  display: grid;
+  gap: 8px 12px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  list-style: none;
+  margin: 14px 0 16px;
+  padding: 0;
+}
+
+.fw-feature-list li {
+  color: #c8d5e2;
+  font-size: .7rem;
+}
+
+.fw-feature-list li::before {
+  color: var(--fw-accent);
+  content: "✓";
+  font-weight: 800;
+  margin-right: 7px;
+}
+
+.fw-select-button {
+  background: linear-gradient(100deg, var(--fw-accent), #4488f4);
+  border: 0;
+  border-radius: 10px;
+  color: #05111b;
+  cursor: pointer;
+  font: inherit;
+  font-size: .8rem;
+  font-weight: 800;
+  min-height: 46px;
+  padding: 11px 14px;
+  width: 100%;
+}
+
+.fw-select-button:hover,
+.fw-select-button:focus-visible { filter: brightness(1.08); }
+
+.firmware-match-note {
+  align-items: center;
+  color: var(--text-muted, #94a3b8);
+  display: flex;
+  flex-wrap: wrap;
+  font-size: .75rem;
+  gap: 8px;
+  justify-content: center;
+  margin: 17px 0 0;
+}
+
+.firmware-match-note strong { color: #e2e8f0; }
+
+.flash-console {
+  grid-template-columns: minmax(0, 1fr);
+  margin: 26px auto 36px;
+  max-width: 860px;
+}
+
+.flash-console .legacy-carousel[hidden],
+.legacy-product-summary[hidden] { display: none !important; }
+
+.flash-console .info-box { gap: 18px; padding: clamp(18px, 4vw, 30px); }
+
+.flash-context h2 {
+  color: #f8fafc;
+  font-size: clamp(1.25rem, 2.5vw, 1.65rem);
+  margin: 5px 0;
+}
+
+.flash-context p { color: var(--text-muted, #94a3b8); font-size: .82rem; margin: 0; }
+.flash-console .flash-panel { margin-top: 0; }
+
+@media (max-width: 850px) {
+  .firmware-product-grid { grid-template-columns: minmax(0, 1fr); margin: 0 auto; max-width: 640px; }
+  .fw-card-gallery { aspect-ratio: 16 / 9; }
+}
+
+@media (max-width: 480px) {
+  .fw-product-heading, .fw-product-body { padding-left: 14px; padding-right: 14px; }
+  .fw-spec-grid { gap: 10px; }
+  .fw-feature-list { gap: 8px; }
+  .fw-feature-list li { font-size: .67rem; }
+}

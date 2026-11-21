@@ -98,6 +98,59 @@ const FIRMWARES = {
   }
 };
 
+const FIRMWARE_CARD_GALLERIES = {
+  duongbot: [
+    { src: "Robot_DuongBot_AI_Camera_40P.jpg", alt: "Robot DuongBot AI Camera 40P", label: "Duongbot-AI-Cam-OV3660-40P" },
+    { src: "So_Do_Noi_Day_DuongBot_3K_NetCang.jpg", alt: "Sơ đồ nối dây DuongBot AI", label: "Duongbot-AI-Cam-OV3660-40P" },
+    { src: "DUONGBOT_V1_SO_DO_GPIO.jpg", alt: "Bảng sơ đồ GPIO DuongBot AI", label: "Duongbot-AI-Cam-OV3660-40P" }
+  ],
+  dbotai: [
+    { src: "DBotAI_ST7789_Theme.webp", alt: "Robot D-BotAI với màn hình ST7789", label: "D-BotAI-N16-R8-44P" },
+    { src: "01_Hero_4_Man_Hinh_DBotAI_v2.png", alt: "D-BotAI v2.0 tương thích các nhóm màn hình", label: "D-BotAI-N16-R8-44P" },
+    { src: "02_Man_Tron_GC9A01_5_Che_Do.png", alt: "Giao diện màn hình tròn GC9A01", label: "D-BotAI-N16-R8-44P" },
+    { src: "03_Giai_Tri_Nhac_Radio_Web.png", alt: "Nhạc, Radio và Web Control D-BotAI", label: "D-BotAI-N16-R8-44P" },
+    { src: "D-BotAI_Pinout_Connect.webp", alt: "Sơ đồ chân và đấu nối D-BotAI ESP32-S3-N16-R8-44P", label: "Sơ đồ chân & đấu nối · D-BotAI-N16-R8-44P" }
+  ]
+};
+
+function initFirmwareCardGalleries() {
+  const current = { duongbot: 0, dbotai: 0 };
+
+  function showCardImage(firmwareId, index) {
+    const images = FIRMWARE_CARD_GALLERIES[firmwareId];
+    const gallery = document.querySelector(`[data-fw-gallery="${firmwareId}"]`);
+    if (!images || !gallery) return;
+    current[firmwareId] = (index + images.length) % images.length;
+    const image = images[current[firmwareId]];
+    gallery.querySelector("img").src = image.src;
+    gallery.querySelector("img").alt = image.alt;
+    gallery.querySelector(".fw-image-label").textContent = image.label;
+    gallery.querySelector(".fw-gallery-count").textContent = `${current[firmwareId] + 1}/${images.length}`;
+  }
+
+  document.querySelectorAll("[data-fw-step]").forEach(button => {
+    button.addEventListener("click", () => {
+      const gallery = button.closest("[data-fw-gallery]");
+      const firmwareId = gallery?.dataset.fwGallery;
+      if (!firmwareId) return;
+      showCardImage(firmwareId, current[firmwareId] + Number(button.dataset.fwStep));
+    });
+  });
+
+  document.querySelector("[data-show-fw-pinout]")?.addEventListener("click", () => {
+    const pinoutIndex = FIRMWARE_CARD_GALLERIES.dbotai.findIndex(image => image.src === "D-BotAI_Pinout_Connect.webp");
+    showCardImage("dbotai", pinoutIndex);
+    document.getElementById("dbotai-card-gallery")?.scrollIntoView({ behavior: "smooth", block: "center" });
+  });
+
+  document.querySelectorAll("[data-select-firmware]").forEach(button => {
+    button.addEventListener("click", () => {
+      selectFirmware(button.dataset.selectFirmware);
+      document.getElementById("flasher")?.scrollIntoView({ behavior: "smooth", block: "center" });
+    });
+  });
+}
+
 let selectedFirmwareId = "duongbot";
 
 function renderFirmwareFeatures(firmware) {
@@ -128,6 +181,8 @@ function selectFirmware(firmwareId) {
   document.getElementById("spec-size").textContent = firmware.size;
   document.getElementById("spec-hardware").textContent = firmware.hardware;
   document.getElementById("flash-action-label").textContent = `NẠP ${firmware.name}`;
+  const flashContextTitle = document.getElementById("flash-context-title");
+  if (flashContextTitle) flashContextTitle.textContent = `Nạp ${firmware.name} · ${firmware.board}`;
   renderFirmwareFeatures(firmware);
   document.dispatchEvent(new CustomEvent("firmware-selection-change", { detail: { gallery: firmware.gallery } }));
 }
@@ -558,6 +613,7 @@ document.addEventListener("DOMContentLoaded", () => {
     button.addEventListener("click", () => selectFirmware(button.dataset.firmwareId));
   });
   selectFirmware(selectedFirmwareId);
+  initFirmwareCardGalleries();
   initCarousel();
 
   // Primary Flash Button

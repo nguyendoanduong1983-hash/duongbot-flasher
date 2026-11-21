@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>DươngBot AI - Nạp Firmware Trực Tuyến & Sơ Đồ Chân</title>
   <meta name="description" content="Trang web nạp Firmware DươngBot AI Camera + OLED trực tuyến qua trình duyệt, xem sơ đồ chân GPIO và kết nối phần cứng.">
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="style.css?v=20261121_0200">
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🤖</text></svg>">
 </head>
 <body>
@@ -21,7 +21,7 @@
       </a>
 
       <ul class="nav-links">
-        <li><a href="#flasher" class="active">Nạp Firmware</a></li>
+        <li><a href="#firmwares" class="active">Nạp Firmware</a></li>
         <li><a href="#serial-monitor">Serial Monitor</a></li>
         <li><a href="#huong-dan">Hướng Dẫn & Driver</a></li>
       </ul>
@@ -43,11 +43,99 @@
       </p>
     </header>
 
+    <section class="firmware-selector-section" id="firmwares" aria-labelledby="firmware-selector-title">
+      <header class="firmware-selector-heading">
+        <span>CHỌN ĐÚNG BẢN THEO BO MẠCH</span>
+        <h2 id="firmware-selector-title">Hai firmware. Hai cấu hình riêng.</h2>
+        <p>Mỗi bản có ảnh, phần cứng, tính năng và tệp nạp riêng. Kiểm tra model bo ESP32-S3 trước khi nạp.</p>
+      </header>
+
+      <div class="firmware-product-grid">
+        <article class="fw-product-card fw-product-card--duongbot" aria-labelledby="duongbot-card-title">
+          <header class="fw-product-heading">
+            <div>
+              <span class="fw-product-kicker">FIRMWARE 01 · CAMERA 40P</span>
+              <h3 id="duongbot-card-title">DuongBot AI Camera &amp; OLED</h3>
+              <p>ESP32S3-N16-R8-CAM-40P</p>
+            </div>
+            <span class="fw-ready-tag">Sẵn sàng nạp</span>
+          </header>
+
+          <div class="fw-card-gallery" data-fw-gallery="duongbot" aria-label="Album ảnh DuongBot AI">
+            <img src="Robot_DuongBot_AI_Camera_40P.jpg" alt="Robot DuongBot AI Camera 40P">
+            <span class="fw-image-label">Duongbot-AI-Cam-OV3660-40P</span>
+            <div class="fw-gallery-controls">
+              <button type="button" data-fw-step="-1" aria-label="Ảnh trước — DuongBot AI">‹</button>
+              <span class="fw-gallery-count" aria-live="polite">1/3</span>
+              <button type="button" data-fw-step="1" aria-label="Ảnh tiếp — DuongBot AI">›</button>
+            </div>
+          </div>
+
+          <div class="fw-product-body">
+            <p class="fw-product-description">Firmware dành cho bo camera 40 chân, tích hợp camera VO3660 và đôi mắt OLED biểu cảm Mochan.</p>
+            <dl class="fw-spec-grid">
+              <div><dt>Vi điều khiển</dt><dd>ESP32-S3 · N16R8 · 40P</dd></div>
+              <div><dt>Camera</dt><dd>VO3660</dd></div>
+              <div><dt>Màn hình</dt><dd>OLED SSD1306</dd></div>
+              <div><dt>Tệp nạp</dt><dd>duongbot_cam_oled.bin</dd></div>
+            </dl>
+            <ul class="fw-feature-list">
+              <li>AI Xiaozhi, đàm thoại hai chiều</li>
+              <li>Camera và điều khiển Web</li>
+              <li>Nhạc online, YouTube, SoundCloud</li>
+              <li>Radio Việt Nam và Spectrum</li>
+            </ul>
+            <button class="fw-select-button" type="button" data-select-firmware="duongbot">CHỌN DUONGBOT AI</button>
+          </div>
+        </article>
+
+        <article class="fw-product-card fw-product-card--dbotai" aria-labelledby="dbotai-card-title">
+          <header class="fw-product-heading">
+            <div>
+              <span class="fw-product-kicker">FIRMWARE 02 · MULTI-DISPLAY 44P</span>
+              <h3 id="dbotai-card-title">D-BotAI Multi-Display v2.0</h3>
+              <p>ESP32-S3-N16-R8-44P</p>
+            </div>
+            <span class="fw-ready-tag">Sẵn sàng nạp</span>
+          </header>
+
+          <div class="fw-card-gallery" id="dbotai-card-gallery" data-fw-gallery="dbotai" aria-label="Album ảnh D-BotAI Multi-Display">
+            <img src="DBotAI_ST7789_Theme.webp" alt="Robot D-BotAI với màn hình ST7789">
+            <span class="fw-image-label">D-BotAI-N16-R8-44P</span>
+            <div class="fw-gallery-controls">
+              <button type="button" data-fw-step="-1" aria-label="Ảnh trước — D-BotAI">‹</button>
+              <span class="fw-gallery-count" aria-live="polite">1/5</span>
+              <button type="button" data-fw-step="1" aria-label="Ảnh tiếp — D-BotAI">›</button>
+            </div>
+          </div>
+
+          <div class="fw-product-body">
+            <p class="fw-product-description">Một firmware cho bo 44 chân; chọn màn hình đang gắn trên Web Control mà không cần nạp lại code.</p>
+            <dl class="fw-spec-grid">
+              <div><dt>Vi điều khiển</dt><dd>ESP32-S3 · N16R8 · 44P</dd></div>
+              <div><dt>Cảm biến</dt><dd>VL53L0X ToF</dd></div>
+              <div><dt>Màn hình</dt><dd>OLED · ST7735 · ST7789 · GC9A01</dd></div>
+              <div><dt>Tệp nạp</dt><dd>D-BotAI.bin</dd></div>
+            </dl>
+            <button class="fw-pinout-button" type="button" data-show-fw-pinout aria-controls="dbotai-card-gallery">📍 MỞ SƠ ĐỒ CHÂN &amp; ĐẤU NỐI ESP32-S3 44P →</button>
+            <ul class="fw-feature-list">
+              <li>4 nhóm màn hình, chọn trực tiếp trên Web</li>
+              <li>5 giao diện, có mắt robot 3D</li>
+              <li>AI, nhạc online và Radio</li>
+              <li>Spectrum 360° và cảm biến ToF</li>
+            </ul>
+            <button class="fw-select-button" type="button" data-select-firmware="dbotai">CHỌN D-BOTAI MULTI-DISPLAY</button>
+          </div>
+        </article>
+      </div>
+      <p class="firmware-match-note"><strong>40P dùng DuongBot AI</strong><span>·</span><strong>44P dùng D-BotAI</strong></p>
+    </section>
+
     <!-- Main Showcase & Flasher Card -->
-    <section class="showcase-card" id="flasher">
+    <section class="showcase-card flash-console" id="flasher">
       
       <!-- CỘT TRÁI: CAROUSEL LẬT ẢNH (SẢN PHẨM -> NỐI DÂY -> BẢNG GPIO) -->
-      <div class="carousel-box" id="carousel-box">
+      <div class="carousel-box legacy-carousel" id="carousel-box" hidden>
         <!-- Nút Kính lúp Phóng to góc phải -->
         <button class="zoom-badge-btn" id="zoom-btn" title="Phóng to ảnh nét căng">
           <span>🔍</span> Phóng to
@@ -128,7 +216,12 @@
 
       <!-- CỘT PHẢI: THÔNG TIN & BẢNG ĐIỀU KHIỂN NẠP FIRMWARE -->
       <div class="info-box">
-        <div>
+        <div class="flash-context">
+          <span class="fw-product-kicker">NẠP TRỰC TIẾP QUA USB</span>
+          <h2 id="flash-context-title">Đang chọn DuongBot AI</h2>
+          <p>Kiểm tra đúng model bo mạch và tệp BIN, sau đó bấm nạp để kết nối cổng USB.</p>
+        </div>
+        <div class="legacy-product-summary" hidden>
           <div class="firmware-choices" role="group" aria-label="Chọn firmware để nạp">
             <button class="firmware-choice active" type="button" data-firmware-id="duongbot" aria-pressed="true">
               <small>FIRMWARE 01</small><b>DuongBot AI</b><span>ESP32S3-N16-R8-CAM-40P</span>
@@ -328,7 +421,7 @@
   </footer>
 
   <!-- MODULE JS -->
-  <script type="module" src="flasher.js?v=20261121_0100"></script>
+  <script type="module" src="flasher.js?v=20261121_0200"></script>
 
 </body>
 </html>
